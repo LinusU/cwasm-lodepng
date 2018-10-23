@@ -32,7 +32,7 @@ WORKDIR /src
 # FIXME: see https://github.com/jfbastien/musl/pull/51 for progress
 # RUN git clone https://github.com/jfbastien/musl.git && cd musl && git checkout edeb5004
 # RUN git clone https://github.com/yurydelendik/musl.git && cd musl && git checkout aba5aae0
-RUN git clone https://github.com/LinusU/musl.git && cd musl && git checkout 61f9c20
+RUN git clone https://github.com/LinusU/musl.git && cd musl && git checkout 635de63
 
 WORKDIR /build/musl
 
