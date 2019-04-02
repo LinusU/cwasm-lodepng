@@ -5,7 +5,7 @@ const path = require('path')
 
 const code = fs.readFileSync(path.join(__dirname, 'lodepng.wasm'))
 const wasmModule = new WebAssembly.Module(code)
-const instance = new WebAssembly.Instance(wasmModule, { env: {} })
+const instance = new WebAssembly.Instance(wasmModule)
 
 exports.decode = function (input) {
   // Allocate memory to hand over the input data to WASM
