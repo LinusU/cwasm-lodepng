@@ -1,7 +1,3 @@
-interface ImageData {
-  width: number
-  height: number
-  data: Uint8ClampedArray
-}
+import ImageData = require('@canvas/image-data')
 
 export function decode (source: Uint8Array): ImageData

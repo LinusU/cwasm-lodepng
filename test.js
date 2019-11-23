@@ -4,6 +4,8 @@ const fs = require('fs')
 const path = require('path')
 const assert = require('assert')
 
+const ImageData = require('@canvas/image-data')
+
 const lodepng = require('./')
 
 function getPixel (img, x, y) {
@@ -15,6 +17,8 @@ describe('Decode', () => {
     const data = fs.readFileSync(path.join(__dirname, 'fixtures/basn3p01.png'))
     const img = lodepng.decode(data)
 
+    assert(img instanceof ImageData)
+
     assert.equal(img.width, 32)
     assert.equal(img.height, 32)
 
@@ -25,6 +29,8 @@ describe('Decode', () => {
   it('should decode "clock.png', () => {
     const data = fs.readFileSync(path.join(__dirname, 'fixtures/clock.png'))
     const img = lodepng.decode(data)
+
+    assert(img instanceof ImageData)
 
     assert.equal(img.width, 320)
     assert.equal(img.height, 320)

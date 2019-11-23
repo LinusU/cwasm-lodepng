@@ -12,6 +12,9 @@
     "prepare": "make lodepng.wasm",
     "test": "make test"
   },
+  "dependencies": {
+    "@canvas/image-data": "^1.0.0"
+  },
   "devDependencies": {
     "mocha": "^5.2.0"
   }

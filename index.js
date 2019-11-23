@@ -3,6 +3,8 @@
 const fs = require('fs')
 const path = require('path')
 
+const ImageData = require('@canvas/image-data')
+
 const code = fs.readFileSync(path.join(__dirname, 'lodepng.wasm'))
 const wasmModule = new WebAssembly.Module(code)
 const instance = new WebAssembly.Instance(wasmModule)
@@ -48,5 +50,5 @@ exports.decode = function (input) {
   instance.exports.free(outputPointer)
 
   // Return decoded image as raw data
-  return { width, height, data: output }
+  return new ImageData(output, width, height)
 }
