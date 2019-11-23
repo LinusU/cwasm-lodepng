@@ -1,8 +1,8 @@
 {
   "name": "@cwasm/lodepng",
   "version": "0.1.1",
-  "license": "MIT",
   "repository": "LinusU/cwasm-lodepng",
+  "license": "MIT",
   "files": [
     "index.d.ts",
     "index.js",
