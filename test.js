@@ -19,11 +19,11 @@ describe('Decode', () => {
 
     assert(img instanceof ImageData)
 
-    assert.equal(img.width, 32)
-    assert.equal(img.height, 32)
+    assert.strictEqual(img.width, 32)
+    assert.strictEqual(img.height, 32)
 
-    assert.equal(getPixel(img, 18, 10), 'ff22ffee')
-    assert.equal(getPixel(img, 14, 26), 'ffff6622')
+    assert.strictEqual(getPixel(img, 18, 10), 'ff22ffee')
+    assert.strictEqual(getPixel(img, 14, 26), 'ffff6622')
   })
 
   it('should decode "clock.png', () => {
@@ -32,10 +32,10 @@ describe('Decode', () => {
 
     assert(img instanceof ImageData)
 
-    assert.equal(img.width, 320)
-    assert.equal(img.height, 320)
+    assert.strictEqual(img.width, 320)
+    assert.strictEqual(img.height, 320)
 
-    assert.equal(getPixel(img, 57, 57), 'ffa25f32')
-    assert.equal(getPixel(img, 225, 103), 'ff0000d4')
+    assert.strictEqual(getPixel(img, 57, 57), 'ffa25f32')
+    assert.strictEqual(getPixel(img, 225, 103), 'ff0000d4')
   })
 })
