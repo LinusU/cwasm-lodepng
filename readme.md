@@ -2,6 +2,9 @@
 
 PNG decoding for Node.js, using [LodePNG][LodePNG] compiled to [WebAssembly][WebAssembly].
 
+[LodePNG]: https://lodev.org/lodepng/
+[WebAssembly]: https://webassembly.org
+
 ## Installation
 
 ```sh
@@ -26,10 +29,7 @@ console.log(image)
 
 ## API
 
-### `decode(source: Uint8Array): ImageData`
+### `decode(source)`
 
-Decodes raw PNG data into an [`ImageData`][ImageData] object.
-
-[ImageData]: https://developer.mozilla.org/en-US/docs/Web/API/ImageData
-[LodePNG]: https://lodev.org/lodepng/
-[WebAssembly]: https://webassembly.org
+- `source` ([`Uint8Array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array), required) - The PNG data
+- returns [`ImageData`](https://developer.mozilla.org/en-US/docs/Web/API/ImageData) - Decoded width, height and pixel data
