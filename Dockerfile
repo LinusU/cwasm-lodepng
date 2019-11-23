@@ -20,7 +20,7 @@ RUN curl -L https://github.com/CraneStation/wasi-sdk/releases/download/wasi-sdk-
 
 WORKDIR /code
 
-RUN git clone https://github.com/lvandeve/lodepng.git && cd lodepng && git checkout 941de186edfc68bca5ba1043423d0937b4baf3c6
+RUN git clone https://github.com/lvandeve/lodepng.git && cd lodepng && git checkout f8700e02c554001bc3a2a346f6d1f6457c2a502a
 RUN mv lodepng/lodepng.cpp lodepng/lodepng.c
 
 # Relase build
