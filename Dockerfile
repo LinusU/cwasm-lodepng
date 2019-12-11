@@ -24,9 +24,9 @@ RUN git clone https://github.com/lvandeve/lodepng.git && cd lodepng && git check
 RUN mv lodepng/lodepng.cpp lodepng/lodepng.c
 
 # Relase build
-RUN clang --sysroot=/share/wasi-sysroot --target=wasm32-unknown-wasi -Oz     -o lodepng.wasm -DLODEPNG_NO_COMPILE_DISK -DLODEPNG_NO_COMPILE_CPP -nostartfiles -fvisibility=hidden -Wl,--no-entry,--demangle,--export=malloc,--export=free,--export=lodepng_decode32,--strip-all -- lodepng/lodepng.c
+RUN clang --sysroot=/share/wasi-sysroot --target=wasm32-unknown-wasi -flto -Oz     -o lodepng.wasm -DLODEPNG_NO_COMPILE_DISK -DLODEPNG_NO_COMPILE_CPP -nostartfiles -fvisibility=hidden -Wl,--no-entry,--demangle,--export=malloc,--export=free,--export=lodepng_decode32,--strip-all -- lodepng/lodepng.c
 
 # Debug build
-# RUN clang --sysroot=/share/wasi-sysroot --target=wasm32-unknown-wasi -O0 -g3 -o lodepng.wasm -DLODEPNG_NO_COMPILE_DISK -DLODEPNG_NO_COMPILE_CPP -nostartfiles -fvisibility=hidden -Wl,--no-entry,--demangle,--export=malloc,--export=free,--export=lodepng_decode32,             -- lodepng/lodepng.c
+# RUN clang --sysroot=/share/wasi-sysroot --target=wasm32-unknown-wasi -flto -O0 -g3 -o lodepng.wasm -DLODEPNG_NO_COMPILE_DISK -DLODEPNG_NO_COMPILE_CPP -nostartfiles -fvisibility=hidden -Wl,--no-entry,--demangle,--export=malloc,--export=free,--export=lodepng_decode32,             -- lodepng/lodepng.c
 
 CMD base64 --wrap=0 lodepng.wasm
