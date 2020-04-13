@@ -26,7 +26,7 @@ RUN curl -L https://github.com/WebAssembly/binaryen/releases/download/1.39.1/bin
 
 WORKDIR /code
 
-RUN git clone https://github.com/lvandeve/lodepng.git && cd lodepng && git checkout f8700e02c554001bc3a2a346f6d1f6457c2a502a
+RUN git clone https://github.com/lvandeve/lodepng.git && cd lodepng && git checkout e34ac04553e51a6982ae234d98ce6b76dd57a6a1
 RUN mv lodepng/lodepng.cpp lodepng/lodepng.c
 
 # Relase build
