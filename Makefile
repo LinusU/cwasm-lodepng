@@ -1,8 +1,8 @@
 .PHONY: test
 
 lodepng.wasm: Dockerfile
-	docker build .
-	sh -c 'docker run --rm -it $$(docker build -q .) | base64 -D > lodepng.wasm'
+	docker build --platform linux/amd64 .
+	sh -c 'docker run --platform linux/amd64 --rm -it $$(docker build --platform linux/amd64 -q .) | base64 -D > lodepng.wasm'
 
 test: lodepng.wasm index.js test.js
 	@node_modules/.bin/standard
