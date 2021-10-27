@@ -1,4 +1,4 @@
-FROM ubuntu:18.04
+FROM ubuntu:20.04
 
 #########################
 # Install prerequisites #
@@ -9,16 +9,16 @@ RUN \
   apt-get install -y ca-certificates curl git
 
 #########################
-# Install WASI SDK 10.0 #
+# Install WASI SDK 12.0 #
 #########################
 
-RUN curl -L https://github.com/WebAssembly/wasi-sdk/releases/download/wasi-sdk-10/wasi-sdk-10.0-linux.tar.gz | tar xz --strip-components=1 -C /
+RUN curl -L https://github.com/WebAssembly/wasi-sdk/releases/download/wasi-sdk-12/wasi-sdk-12.0-linux.tar.gz | tar xzk --strip-components=1 -C /
 
-###########################
-# Install binaryen 1.39.1 #
-###########################
+#########################
+# Install binaryen v101 #
+#########################
 
-RUN curl -L https://github.com/WebAssembly/binaryen/releases/download/1.39.1/binaryen-1.39.1-x86_64-linux.tar.gz | tar xz --strip-components=1 -C /usr/bin/
+RUN curl -L https://github.com/WebAssembly/binaryen/releases/download/version_101/binaryen-version_101-x86_64-linux.tar.gz | tar xzk --strip-components=1 -C /
 
 #####################
 # Build actual code #
