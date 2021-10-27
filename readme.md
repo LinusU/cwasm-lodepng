@@ -1,6 +1,6 @@
 # LodePNG
 
-PNG decoding for Node.js, using [LodePNG][LodePNG] compiled to [WebAssembly][WebAssembly].
+PNG decoding/encoding for Node.js, using [LodePNG][LodePNG] compiled to [WebAssembly][WebAssembly].
 
 [LodePNG]: https://lodev.org/lodepng/
 [WebAssembly]: https://webassembly.org
@@ -25,6 +25,11 @@ console.log(image)
 //   height: 128,
 //   data:
 //    Uint8ClampedArray [ ... ] }
+
+const data = lodepng.encode(image)
+
+console.log(data)
+// Uint8Array [ 137, 80, 78, 71, ... ]
 ```
 
 ## API
@@ -33,3 +38,8 @@ console.log(image)
 
 - `source` ([`Uint8Array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array), required) - The PNG data
 - returns [`ImageData`](https://developer.mozilla.org/en-US/docs/Web/API/ImageData) - Decoded width, height and pixel data
+
+### `encode(source)`
+
+- `source` (`ImageLike`, required) - The image data
+- returns [`Uint8Array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array) - Encoded data

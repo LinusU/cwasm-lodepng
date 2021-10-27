@@ -16,6 +16,7 @@
     "@canvas/image-data": "^1.0.0"
   },
   "devDependencies": {
+    "image-size": "^1.0.0",
     "mocha": "^7.1.1",
     "standard": "^14.3.3",
     "ts-readme-generator": "^0.4.2"
