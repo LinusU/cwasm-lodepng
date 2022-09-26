@@ -9,10 +9,10 @@ RUN \
   DEBIAN_FRONTEND=noninteractive apt-get install -y ca-certificates curl git libxml2
 
 #########################
-# Install WASI SDK 15.0 #
+# Install WASI SDK 16.0 #
 #########################
 
-RUN curl -L https://github.com/WebAssembly/wasi-sdk/releases/download/wasi-sdk-15/wasi-sdk-15.0-linux.tar.gz | tar xzk --strip-components=1 -C /
+RUN curl -L https://github.com/WebAssembly/wasi-sdk/releases/download/wasi-sdk-16/wasi-sdk-16.0-linux.tar.gz | tar xzk --strip-components=1 -C /
 
 #########################
 # Install binaryen v110 #
