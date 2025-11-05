@@ -20,5 +20,8 @@
     "mocha": "^7.1.1",
     "standard": "^14.3.3",
     "ts-readme-generator": "^0.4.2"
+  },
+  "engines": {
+    "node": ">=8.0.0"
   }
 }

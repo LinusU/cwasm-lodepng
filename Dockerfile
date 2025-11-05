@@ -9,10 +9,10 @@ RUN \
   DEBIAN_FRONTEND=noninteractive apt-get install -y ca-certificates curl git libxml2
 
 #########################
-# Install WASI SDK 28.0 #
+# Install WASI SDK 15.0 #
 #########################
 
-RUN curl -L https://github.com/WebAssembly/wasi-sdk/releases/download/wasi-sdk-28/wasi-sdk-28.0-x86_64-linux.tar.gz | tar xzk --strip-components=1 -C /
+RUN curl -L https://github.com/WebAssembly/wasi-sdk/releases/download/wasi-sdk-15/wasi-sdk-15.0-linux.tar.gz | tar xzk --strip-components=1 -C /
 
 #########################
 # Install binaryen v124 #
@@ -35,6 +35,6 @@ RUN clang --sysroot=/share/wasi-sysroot --target=wasm32-unknown-wasi -flto -Oz  
 # Debug build
 # RUN clang --sysroot=/share/wasi-sysroot --target=wasm32-unknown-wasi -flto -O0 -g3 -o lodepng.wasm -DLODEPNG_NO_COMPILE_DISK -DLODEPNG_NO_COMPILE_CPP -mexec-model=reactor -fvisibility=hidden -Wl,--export=malloc,--export=free,--export=lodepng_decode32,--export=lodepng_encode32             -- lodepng/lodepng.c
 
-RUN wasm-opt -Oz lodepng.wasm -o lodepng.wasm
+RUN wasm-opt --signext-lowering -Oz lodepng.wasm -o lodepng.wasm
 
 CMD ["base64", "--wrap=0", "lodepng.wasm"]
