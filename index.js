@@ -5,9 +5,13 @@ const path = require('path')
 
 const ImageData = require('@canvas/image-data')
 
+const stubs = {
+  random_get: () => { throw new Error('Syscall random_get not implemented') }
+}
+
 const code = fs.readFileSync(path.join(__dirname, 'lodepng.wasm'))
 const wasmModule = new WebAssembly.Module(code)
-const instance = new WebAssembly.Instance(wasmModule)
+const instance = new WebAssembly.Instance(wasmModule, { wasi_snapshot_preview1: stubs })
 
 exports.decode = function (input) {
   // Allocate memory to hand over the input data to WASM

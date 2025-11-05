@@ -1,4 +1,4 @@
-FROM ubuntu:22.04
+FROM ubuntu:24.04
 
 #########################
 # Install prerequisites #
@@ -9,16 +9,16 @@ RUN \
   DEBIAN_FRONTEND=noninteractive apt-get install -y ca-certificates curl git libxml2
 
 #########################
-# Install WASI SDK 15.0 #
+# Install WASI SDK 28.0 #
 #########################
 
-RUN curl -L https://github.com/WebAssembly/wasi-sdk/releases/download/wasi-sdk-15/wasi-sdk-15.0-linux.tar.gz | tar xzk --strip-components=1 -C /
+RUN curl -L https://github.com/WebAssembly/wasi-sdk/releases/download/wasi-sdk-28/wasi-sdk-28.0-x86_64-linux.tar.gz | tar xzk --strip-components=1 -C /
 
 #########################
-# Install binaryen v110 #
+# Install binaryen v124 #
 #########################
 
-RUN curl -L https://github.com/WebAssembly/binaryen/releases/download/version_110/binaryen-version_110-x86_64-linux.tar.gz | tar xzk --strip-components=1 -C /
+RUN curl -L https://github.com/WebAssembly/binaryen/releases/download/version_124/binaryen-version_124-x86_64-linux.tar.gz | tar xzk --strip-components=1 -C /
 
 #####################
 # Build actual code #
@@ -37,4 +37,4 @@ RUN clang --sysroot=/share/wasi-sysroot --target=wasm32-unknown-wasi -flto -Oz  
 
 RUN wasm-opt -Oz lodepng.wasm -o lodepng.wasm
 
-CMD base64 --wrap=0 lodepng.wasm
+CMD ["base64", "--wrap=0", "lodepng.wasm"]
