@@ -109,4 +109,20 @@ describe('Encode', function () {
 
     return assert.throws(() => lodepng.encode(img))
   })
+
+  it('should encode24 and decode24 roundtrip', () => {
+    const raw = Buffer.from([0xff, 0x22, 0xee, 0x11, 0x22, 0x33])
+    const img = {
+      data: raw,
+      width: 2,
+      height: 1
+    }
+
+    const png = lodepng.encode24(img)
+    const decoded = lodepng.decode24(png)
+
+    assert.strictEqual(decoded.width, 2)
+    assert.strictEqual(decoded.height, 1)
+    assert.deepStrictEqual(Buffer.from(decoded.data), raw)
+  })
 })
