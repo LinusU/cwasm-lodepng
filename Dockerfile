@@ -26,7 +26,8 @@ RUN curl -L https://github.com/WebAssembly/binaryen/releases/download/version_12
 
 WORKDIR /code
 
-RUN git clone https://github.com/lvandeve/lodepng.git && cd lodepng && git checkout d41d4aa8c63dea277e25c94ad85046b6c5335ccc
+# LodePNG version 20260119 + master fixes up to 2026-05-28
+RUN git clone https://github.com/lvandeve/lodepng.git && cd lodepng && git checkout ed6fe5825c6a4fbb7f58ab35a4231c7543cd452a
 RUN mv lodepng/lodepng.cpp lodepng/lodepng.c
 
 # Relase build
