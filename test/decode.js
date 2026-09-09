@@ -41,4 +41,22 @@ describe('Decode', () => {
     assert.strictEqual(getPixel(img, 57, 57), 0xffa25f32)
     assert.strictEqual(getPixel(img, 225, 103), 0xff0000d4)
   })
+
+  it('should decode24 "clock.png"', () => {
+    const data = fs.readFileSync(path.join(__dirname, 'clock.png'))
+    const img32 = lodepng.decode(data)
+    const img24 = lodepng.decode24(data)
+
+    assert(img24.data instanceof Uint8ClampedArray)
+    assert.strictEqual(img24.width, 320)
+    assert.strictEqual(img24.height, 320)
+    assert.strictEqual(img24.data.length, 320 * 320 * 3)
+
+    // Check RGB values match img32
+    for (let i = 0; i < 320 * 320; i++) {
+      assert.strictEqual(img24.data[i * 3], img32.data[i * 4])
+      assert.strictEqual(img24.data[i * 3 + 1], img32.data[i * 4 + 1])
+      assert.strictEqual(img24.data[i * 3 + 2], img32.data[i * 4 + 2])
+    }
+  })
 })
